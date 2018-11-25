@@ -1,14 +1,24 @@
-
 class Lifter
 
-
+  ALL = []
 
   attr_reader :name, :lift_total
 
   def initialize(name, lift_total)
     @name = name
     @lift_total = lift_total
+    self.class.all << self
+  end
 
+  def self.all
+    ALL
+  end
+
+  def self.average_lift_total
+    total = 0
+    lifters = self.all.count
+    self.all.each {|lifter| total += lifter.lift_total}
+    total.to_f / lifters.to_f
   end
 
   def memberships
@@ -19,6 +29,16 @@ class Lifter
       m.lifter == self
     end
 
+  end
+
+  def membership_costs
+    total = 0
+    memberships.each {|membership| total += membership.cost}
+    total
+  end
+
+  def sign_up(gym, cost)
+    Membership.new(cost, self, gym)
   end
 
   def gyms

@@ -7,10 +7,10 @@ class Membership
     @cost = cost
     @lifter = lifter
     @gym = gym
-    ALL << self
+    self.class.all << self
   end
 
-  def self.all 
+  def self.all
     ALL
   end
 
