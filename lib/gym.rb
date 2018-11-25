@@ -21,5 +21,19 @@ class Gym
     end
   end
 
+  def lifters
+    Membership.all.collect do |m|
+      m.lifter
+    end
+  end
+
+  def total_lift
+    sum = 0
+    Lifter.all.each do |lifter|
+      sum += lifter.lift_total
+    end
+    sum
+  end
+
 
 end
