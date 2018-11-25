@@ -5,8 +5,7 @@ class Gym
 
   def initialize(name)
     @name = name
-    ALL << self
-
+    self.class.all << self
   end
 
   def self.all
@@ -21,5 +20,16 @@ class Gym
     end
   end
 
+  def lifters
+    memberships.map {|membership| membership.lifter}
+  end
+
+  def find_lifters_by_name
+    lifters.map {|lifter| lifter.name}
+  end
+
+  def member_lift_total
+    lifters.map {|lifter| lifter.lift_total}.reduce(:+)
+  end
 
 end
