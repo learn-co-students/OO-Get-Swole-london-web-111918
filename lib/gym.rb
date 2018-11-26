@@ -6,7 +6,6 @@ class Gym
   def initialize(name)
     @name = name
     ALL << self
-
   end
 
   def self.all
@@ -14,12 +13,22 @@ class Gym
   end
 
   def memberships
-    #Access all memberships => [Memberships]
-    #determine wheter or not the membership belongs to this gym (self)
     Membership.all.select do |m|
       m.gym == self
     end
   end
 
+  def all_lifters
+    self.memberships.collect {|memship| memship.lifter}
+  end
+
+  def lifter_names
+    self.all_lifters.collect {|member| member.name}
+  end
+
+  def combined_lift_total
+    array = self.all_lifters.collect {|member| member.lift_total}
+    array.reduce(:+)
+  end
 
 end
