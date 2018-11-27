@@ -1,8 +1,7 @@
-require_relative '/Users/ian/Documents/flatiron-labs/OO-Get-Swole-london-web-111918/environment.rb'
-
-def reload
-  load '/Users/ian/Documents/flatiron-labs/OO-Get-Swole-london-web-111918/environment.rb'
-end
+require 'pry'
+require 'lifter.rb'
+require 'membership.rb'
+require 'gym.rb'
 
 bob = Lifter.new("Bob", 180)
 jim = Lifter.new("Jim", 150)

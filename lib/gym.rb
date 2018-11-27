@@ -1,25 +1,16 @@
 class Gym
- ALL = []
 
-  attr_reader :name
+  attr_accessor :gym
 
-  def initialize(name)
-    @name = name
-    ALL << self
+  @@all = []
 
+  def initialize(gym)
+    @gym = gym
+    @@all << self
   end
 
   def self.all
-    ALL
+    @@all
   end
-
-  def memberships
-    #Access all memberships => [Memberships]
-    #determine wheter or not the membership belongs to this gym (self)
-    Membership.all.select do |m|
-      m.gym == self
-    end
-  end
-
 
 end
